@@ -1,0 +1,35 @@
+{
+  "name": "hostly-ai",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Multi-tenant event orchestration platform",
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "dev": "node scripts/hosted-bootstrap.mjs",
+    "dev:apps": "concurrently --kill-others-on-fail -n API,WEB -c blue,magenta \"npm run start:dev --workspace backend\" \"npm run dev --workspace frontend\"",
+    "setup": "node scripts/hosted-bootstrap.mjs --setup-only",
+    "build": "npm run build --workspace backend && npm run build --workspace frontend",
+    "lint": "npm run lint --workspace backend && npm run lint --workspace frontend",
+    "db:generate": "npm run prisma:generate --workspace backend",
+    "db:migrate": "npm run prisma:migrate --workspace backend",
+    "db:deploy": "npm run prisma:deploy --workspace backend",
+    "db:seed": "npm run prisma:seed --workspace backend",
+    "smoke": "node scripts/smoke.mjs",
+    "routes:check": "node scripts/route-check.mjs"
+  },
+  "engines": {
+    "node": ">=20.11"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.17",
+    "braces": "^3.0.3",
+    "clsx": "^2.1.1",
+    "concurrently": "^9.1.2",
+    "playwright-core": "^1.61.1",
+    "postcss": "^8.5.3",
+    "postcss-selector-parser": "^6.1.4"
+  }
+}

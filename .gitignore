@@ -1,0 +1,31 @@
+# dependencies
+node_modules/
+
+# framework output
+.next/
+.next-dev/
+dist/
+coverage/
+
+# environment and secrets
+.env
+.env.*
+!.env.example
+
+# generated/local data
+backend/uploads/
+*.log
+*.tsbuildinfo
+
+# editor and OS noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# local tooling
+.npm-cache/
+.artifacts/
+artifacts/
